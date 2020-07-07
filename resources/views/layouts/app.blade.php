@@ -159,12 +159,17 @@
       <div class="modal-content">
         
         <div class="modal-body">
- <p>Привет! Пиши мне в Telegram, если хочешь в команду или просто есть мысли по проекту - <a href="https://t.me/i0zgMRV49fX">@i0zgMRV49fX</a>
-</p>
-<p>
-  
-  Если не очень со временем, подпишись, пожалуйста, на новости <a href="https://t.me/grandcore">@grandcore</a> и пулреквесты в <a href="https://github.com/grandcore/grandcore-platform">GitHub</a>, расскажи друзьям. Мне тяжело одному тянуть всё.</p>
-<p>Жду сооснователей ;=)</p>
+ <p>
+
+<ul>
+  <li>Все новости проекта в Telegram канале - <a href="https://t.me/grandcore" target="_blank">@grandcore</a></li>
+  <li>Код на <a href="https://github.com/grandcore/grandcore-platform" target="_blank">GitHub</a></li>
+  <li>Дизай в <a href="https://www.figma.com/file/NlikNEJQHliYlxI3MHhiSW/Share?node-id=0%3A1" target="_blank">Figma</a></li>
+  <li>Реалити-шоу на <a href="https://www.youtube.com/channel/UCCcI0eNBhfd0qHIzZLDvKVA" target="_blank">YouTube</a> </li>
+  <li>Telegram основателя (пишите, если хотите в команду)  - <a href="https://t.me/i0zgMRV49fX" target="_blank">@i0zgMRV49fX</a></li>
+</ul>
+
+<p>Ищем сооснователей в проект!</p>
         </div>
         <div class="modal-footer">
 
