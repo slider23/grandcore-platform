@@ -197,7 +197,7 @@
         });
     </script>
 
-    @if(config('app.env') != 'local')
+    @if(false)
         <script>
         $(window).on('load',function(){
           $('#myModal').modal('show');
