@@ -152,7 +152,7 @@
 <div class="container">
     <div class="row">
         <div class="col-12">
-            <h1>Кратко о GrandCore Foundation</h1>
+            <h1>ЩА ВСЁ БУДЕТ, МИНУТОЧКУ!!! Кратко о GrandCore Foundation</h1>
         </div>
     </div>
 
