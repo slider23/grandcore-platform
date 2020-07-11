@@ -14,7 +14,7 @@
             $data = [
                 [
                     'user_id' => '1',
-                    'role_id' => '3',
+                    'role_id' => '1',
                 ]
             ];
             DB::table('user_roles')->insert($data);

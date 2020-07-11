@@ -173,10 +173,11 @@
                             </form>
                         </div>
                     </li>
+                    @if(Auth::user()->id)
                     <li class="nav-item nav-item-admin">
                         <a class="nav-link">Админка</a>
                     </li>
-                    @endguest
+                    @endif @endguest
                 </ul>
             </div>
         </nav>
@@ -385,10 +386,19 @@
             $(".nav-item-login").click(() => {
                 $("#loginModal").modal("show");
             });
-        </script>
 
-        @if(config('app.env') == 'local')
-        <script src="http://localhost:35729/livereload.js"></script>
-        @endif
+            function setToken($token) {
+                localStorage.setItem("token", $token);
+            }
+
+            ;(function(){
+                const token = '{!! session()->get( 'jwtToken' ); !!}';
+
+               if(token) {
+                   localStorage.setItem('token', token);
+               }
+            })();
+        </script>
     </body>
 </html>
+<!-- session()->get( 'jwtToken' ) -->

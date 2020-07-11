@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use ReallySimpleJWT\Token;
 use Auth;
 
 class LoginController extends Controller
@@ -28,7 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -52,9 +53,16 @@ class LoginController extends Controller
             'password' => request()->input('password'),
         ])) {
 
-            // здесь нужно глянуть является ли пользователь админом
-            // если да нужно сгенерить jwtToken положить в заголовок и отдать клиенту
-            // клиент пишет в localStorage и когда пойдет на /admin его пустит в админ панель
+            if (Auth::user()->roles->first()['name'] === 'admin') {
+                $userId = Auth::user()->id;
+                $secret = env('TOKEN_SECRET_PARAM', 'sec!ReT423*&');
+                $expiration = time() + 3600;
+                $issuer = 'issuer';
+                $token = Token::create($userId, $secret, $expiration, $issuer);
+
+                return redirect('/')->with(['jwtToken' => $token, 'isAdmin' => true]);
+            }
+
             return redirect('/');
         } else {
             return redirect('/')->with('error', 'Неверный логин или пароль');
