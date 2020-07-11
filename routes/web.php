@@ -28,3 +28,13 @@ Route::get('/mvp', function () {
 Route::get('/edem', function () {
     return view('edem');
 });
+
+// auth
+Route::post('/auth/login', ['uses' => 'Auth\LoginController@checkLogin']);
+
+// admin panel
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+
+Auth::routes();
