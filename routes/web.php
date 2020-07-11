@@ -28,3 +28,8 @@ Route::get('/mvp', function () {
 Route::get('/edem', function () {
     return view('edem');
 });
+
+// auth
+Route::post('/auth/login', ['uses' => 'Auth\LoginController@checkLogin']);
+
+Auth::routes();

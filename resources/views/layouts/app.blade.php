@@ -34,7 +34,7 @@
             ><div>
                 <img
                     src="https://mc.yandex.ru/watch/65202709"
-                    style="position:absolute; left:-9999px;"
+                    style="position: absolute; left: -9999px;"
                     alt=""
                 /></div
         ></noscript>
@@ -131,12 +131,57 @@
                         >
                     </li>
 
-                    <li class="nav-item nav-item-register">
+                    @guest
+                    <li class="nav-item nav-item-login">
                         <a class="nav-link">Войти</a>
                     </li>
+                    @else
+                    <li class="nav-item dropdown">
+                        <a
+                            id="navbarDropdown"
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                            v-pre
+                        >
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div
+                            class="dropdown-menu dropdown-menu-right"
+                            aria-labelledby="navbarDropdown"
+                        >
+                            <a
+                                class="dropdown-item"
+                                href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();"
+                            >
+                                Выйти
+                            </a>
+
+                            <form
+                                id="logout-form"
+                                action="{{ route('logout') }}"
+                                method="POST"
+                                style="display: none;"
+                            >
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    <li class="nav-item nav-item-admin">
+                        <a class="nav-link">Админка</a>
+                    </li>
+                    @endguest
                 </ul>
             </div>
         </nav>
+
+        <p class="view-error">{{ session()->get( 'error' ) }}</p>
 
         <main role="main" class="container">
             @yield('content')
@@ -282,60 +327,35 @@
                 <!-- Modal content-->
                 <div class="modal-content">
                     <div class="modal-body">
-                        <p></p>
-
-                        <ul>
-                            <li>
-                                Все новости проекта в Telegram канале -
-                                <a href="https://t.me/grandcore" target="_blank"
-                                    >@grandcore</a
-                                >
-                            </li>
-                            <li>
-                                Код на
-                                <a
-                                    href="https://github.com/grandcore/grandcore-platform"
-                                    target="_blank"
-                                    >GitHub</a
-                                >
-                            </li>
-                            <li>
-                                Дизай в
-                                <a
-                                    href="https://www.figma.com/file/NlikNEJQHliYlxI3MHhiSW/Share?node-id=0%3A1"
-                                    target="_blank"
-                                    >Figma</a
-                                >
-                            </li>
-                            <li>
-                                Реалити-шоу на
-                                <a
-                                    href="https://www.youtube.com/channel/UCCcI0eNBhfd0qHIzZLDvKVA"
-                                    target="_blank"
-                                    >YouTube</a
-                                >
-                            </li>
-                            <li>
-                                Telegram основателя (пишите, если хотите в
-                                команду) -
-                                <a
-                                    href="https://t.me/i0zgMRV49fX"
-                                    target="_blank"
-                                    >@i0zgMRV49fX</a
-                                >
-                            </li>
-                        </ul>
-
-                        <p>Ищем сооснователей в проект!</p>
+                        <form method="POST" action="/auth/login">
+                            {!! csrf_field() !!}
+                            <div class="form-group">
+                                <label>Логин</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    required
+                                    placeholder="Введите email"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    required
+                                    placeholder="Введите пароль"
+                                />
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Войти
+                            </button>
+                        </form>
                     </div>
                     <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-default"
-                            data-dismiss="modal"
-                        >
-                            Окей
-                        </button>
+                        <p>Регистрация</p>
                     </div>
                 </div>
             </div>
@@ -358,11 +378,11 @@
         ></script>
 
         <script>
-            $(window).on("load", function() {
-                $("#myModal").modal("show");
-            });
+            // $(window).on("load", function () {
+            //     $("#myModal").modal("show");
+            // });
 
-            $(".nav-item-register").click(() => {
+            $(".nav-item-login").click(() => {
                 $("#loginModal").modal("show");
             });
         </script>
