@@ -26,3 +26,5 @@ composer.phar
 /docs
 laravel-echo-server.json
 laravel-echo-server.lock
+.env.backup
+.phpunit.result.cache
