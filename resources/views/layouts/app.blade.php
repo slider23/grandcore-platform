@@ -173,9 +173,9 @@
                             </form>
                         </div>
                     </li>
-                    @if(Auth::user()->id)
+                    @if(Auth::user()->id === 1)
                     <li class="nav-item nav-item-admin">
-                        <a class="nav-link">Админка</a>
+                        <a class="nav-link" href="{{ url('/admin') }}">Админка</a>
                     </li>
                     @endif @endguest
                 </ul>
@@ -379,9 +379,9 @@
         ></script>
 
         <script>
-            // $(window).on("load", function () {
-            //     $("#myModal").modal("show");
-            // });
+            $(window).on("load", function () {
+                $("#myModal").modal("show");
+            });
 
             $(".nav-item-login").click(() => {
                 $("#loginModal").modal("show");

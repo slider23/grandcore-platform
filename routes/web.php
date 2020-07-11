@@ -32,4 +32,9 @@ Route::get('/edem', function () {
 // auth
 Route::post('/auth/login', ['uses' => 'Auth\LoginController@checkLogin']);
 
+// admin panel
+Route::get('/admin', function () {
+    return view('admin.index');
+});
+
 Auth::routes();

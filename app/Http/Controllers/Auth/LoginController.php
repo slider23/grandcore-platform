@@ -60,7 +60,7 @@ class LoginController extends Controller
                 $issuer = 'issuer';
                 $token = Token::create($userId, $secret, $expiration, $issuer);
 
-                return redirect('/')->with(['jwtToken' => $token, 'isAdmin' => true]);
+                return redirect('/')->with('jwtToken', $token);
             }
 
             return redirect('/');
