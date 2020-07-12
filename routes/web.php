@@ -37,6 +37,8 @@ Route::get('/users-list', function () {
     return view('admin.users');
 })->middleware('admin');;
 
-Route::get('/invites', ['uses' => 'InviteController@index'])->middleware('admin');;
+Route::get('/invites', ['uses' => 'InviteController@index'])->middleware('admin');
+
+Route::post('/invites', ['uses' => 'InviteController@store'])->middleware('admin');
 
 Auth::routes();

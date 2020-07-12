@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invite;
+use Session;
 
 class InviteController extends Controller
 {
@@ -36,9 +37,17 @@ class InviteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request  $request)
     {
-        //
+
+        Invite::create([
+            'max_count_register' => request()->input('maxCountRegister'),
+            'invite_symbols' => request()->input('inviteCode'),
+        ]);
+
+        $invites = Invite::all();
+
+        return view('admin.invites', ['invites' => $invites]);
     }
 
     /**

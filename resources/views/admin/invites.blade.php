@@ -14,8 +14,9 @@
   <li>Дата создания</li>
 </ul>
 
-<ul class="invites">
+
   @foreach ($invites as $invite)
+  <ul class="invites">
     <li>{{$invite->id}}<li>
     <li>{{$invite->max_count_register}}<li>
     <li>{{$invite->invite_symbols}}<li>
@@ -27,16 +28,16 @@
       <input type="checkbox"  />
     @endif
     <li>{{$invite->created_at}}<li>
-
+    </ul>
   @endforeach
-</ul>
+
 
 <div class="modal fade" id="createInviteModal" role="dialog">
   <div class="modal-dialog">
       <!-- Modal content-->
       <div class="modal-content">
           <div class="modal-body">
-              <form method="POST" action="/invite/create">
+              <form method="POST" action="/invites">
                   {!! csrf_field() !!}
                   <div class="form-group">
                       <label>Invite code</label>
