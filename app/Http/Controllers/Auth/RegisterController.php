@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\RegistrationRequest;
+use App\Model\Invite;
 use App\Providers\RouteServiceProvider;
-use App\Models\User;
+use App\Model\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -42,35 +45,37 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
-     */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'max:255', 'confirmed'],
-            'rePassword' => ['required', 'string', 'min:6', 'max:255', 'confirmed'],
-            'inviteCode' => ['required', 'string', 'min:10', 'max:255', 'confirmed'],
-        ]);
-    }
-
-    /**
      * Create a new user instance after a valid registration.
      *
-     * @param  array  $data
-     * @return \App\Models\User
+     * @param RegistrationRequest $request
+     * @return JsonResponse
      */
-    protected function create()
+    protected function store(RegistrationRequest $request)
     {
-
-        User::create([
-            'email' => request()->input('email'),
-            'password' => Hash::make(request()->input('password')),
+        try {
+            $invite = Invite::where('invite_symbols', $request->invite_symbols)->firstOrFail();
+            if (User::where('invite_id', $invite->id)->count() >= (int)$invite->max_count_register) {
+                throw new \Exception("Max count of registrations for this invite code");
+            }
+        } catch (\Exception $exception) {
+            return response()->json([
+                'data' => [
+                    'message' => 'Incorrect invite code'
+                ]
+            ], 400);
+        }
+        $user = User::create([
+            'name' => $request->input('name'),
+            'email' => $request->   input('email'),
+            'password' => Hash::make($request->input('password')),
+            'invite_id' => $invite->id
         ]);
 
-        return 'ok';
+        return response()->json([
+            'data' => [
+                'user' => $user
+            ],
+            'status' => 'success'
+        ], 200);
     }
 }

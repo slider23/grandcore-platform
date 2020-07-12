@@ -22,6 +22,6 @@
                     'name' => 'disabled',
                 ],
             ];
-            DB::table('roles')->insert($data);
+            \App\Model\Role::create($data);
         }
     }

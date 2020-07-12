@@ -2,58 +2,70 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\InviteRequest;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use App\Models\Invite;
-use Route;
+use App\Model\Invite;
+use Illuminate\Http\Response;
+use Illuminate\Support\Str;
 
 class InviteController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function index()
     {
         // пока все выведу потом доработаем с пагинацией
         $invites = Invite::all();
 
-        return view('admin.invites', ['invites' => $invites]);
+        return response()->json([
+            'data' => [
+                'invites' => $invites
+            ],
+            'status' => 'success'
+        ], 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function generateInviteCode()
     {
-        //
+        return response()->json([
+            'data' => [
+                'invite' => Str::random(10)
+            ],
+            'status' => 'success'
+        ], 200);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param InviteRequest $request
+     * @return JsonResponse
      */
-    public function store(Request  $request)
+    public function store(InviteRequest $request)
     {
-
-        Invite::create([
-            'max_count_register' => request()->input('maxCountRegister'),
-            'invite_symbols' => request()->input('inviteCode'),
+        $invite = Invite::create([
+            'max_count_register' => $request->input('max_count_register'),
+            'invite_symbols' => $request->input('invite_symbols'),
         ]);
 
-        $invites = Invite::all();
-        return redirect()->route('invites');
+        return response()->json([
+            'data' => [
+                'invite' => $invite
+            ],
+            'status' => 'success'
+        ], 200);
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -64,7 +76,7 @@ class InviteController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function edit($id)
     {
@@ -74,9 +86,9 @@ class InviteController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function update(Request $request, $id)
     {
@@ -87,7 +99,7 @@ class InviteController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

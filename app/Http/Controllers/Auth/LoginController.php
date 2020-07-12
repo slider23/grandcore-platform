@@ -40,21 +40,4 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return redirect
-     */
-    public function checklogin()
-    {
-        if (Auth::attempt([
-            'email' => request()->input('email'),
-            'password' => request()->input('password'),
-        ])) {
-            return redirect('/');
-        } else {
-            return redirect('/')->with('error', 'Неверный логин или пароль');
-        }
-    }
 }

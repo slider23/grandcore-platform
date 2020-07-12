@@ -1,13 +1,15 @@
 <?php
 
-namespace App\Models;
+namespace App\Model;
 
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Passport\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, HasApiTokens;
 
     /**
      * The attributes that are mass assignable.
@@ -15,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'email', 'password',
+        'name', 'email', 'password', 'invite_id'
     ];
 
     /**
@@ -38,6 +40,11 @@ class User extends Authenticatable
 
     public function roles()
     {
-        return $this->belongsToMany('App\Models\Role', 'user_roles');
+        return $this->belongsToMany(Role::class, 'user_roles');
+    }
+
+    public function findForPassport($username)
+    {
+        return $this->where('name', $username)->orWhere('email', $username)->first();
     }
 }

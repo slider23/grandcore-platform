@@ -28,21 +28,3 @@ Route::get('/mvp', function () {
 Route::get('/edem', function () {
     return view('edem');
 });
-
-// auth
-Route::post('/auth/login', ['uses' => 'Auth\LoginController@checkLogin']);
-Route::post('/auth/register', ['uses' => 'Auth\RegisterController@create']);
-
-// admin routes
-Route::group([
-    'middleware' => ['admin'],
-], function ($router) {
-    Route::get('/invites', ['uses' => 'InviteController@index']);
-    Route::post('/invites', ['uses' => 'InviteController@store'])->name('invites');
-
-    Route::get('/users-list', function () {
-        return view('admin.users');
-    });
-});
-
-Auth::routes();
