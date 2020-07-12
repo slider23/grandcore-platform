@@ -267,36 +267,7 @@
                             <img src="{{ asset('img/index-02.jpg') }}" alt="GrandCore" />
                         </a>
                     </div>
-                    <div class="col-6 col-md-12 col-lg-6 my-3 thumb">
-                        <a class="screenshot" data-fancybox="gallery" href="{{ asset('img/index-02.jpg') }}">
-                            <img src="{{ asset('img/index-02.jpg') }}" alt="GrandCore" />
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-12 col-lg-6 my-3 thumb">
-                        <a class="screenshot" data-fancybox="gallery" href="{{ asset('img/index-01.png') }}">
-                            <img src="{{ asset('img/index-01.png') }}" alt="GrandCore" />
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-12 col-lg-6 my-3 thumb">
-                        <a class="screenshot" data-fancybox="gallery" href="{{ asset('img/index-01.png') }}">
-                            <img src="{{ asset('img/index-01.png') }}" alt="GrandCore" />
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-12 col-lg-6 my-3 thumb">
-                        <a class="screenshot" data-fancybox="gallery" href="{{ asset('img/index-02.jpg') }}">
-                            <img src="{{ asset('img/index-02.jpg') }}" alt="GrandCore" />
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-12 col-lg-6 my-3 thumb">
-                        <a class="screenshot" data-fancybox="gallery" href="{{ asset('img/index-02.jpg') }}">
-                            <img src="{{ asset('img/index-02.jpg') }}" alt="GrandCore" />
-                        </a>
-                    </div>
-                    <div class="col-6 col-md-12 col-lg-6 my-3 thumb">
-                        <a class="screenshot" data-fancybox="gallery" href="{{ asset('img/index-01.png') }}">
-                            <img src="{{ asset('img/index-01.png') }}" alt="GrandCore" />
-                        </a>
-                    </div>
+           
                 </div>
             </div>
         </div>
