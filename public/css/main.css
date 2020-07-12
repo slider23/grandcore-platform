@@ -1,0 +1,70 @@
+ul {
+  list-style-type: none;
+}
+
+main {
+  min-height: calc(50vh);
+}
+
+.nav-item-login {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.nav-item-admin {
+  position: absolute;
+  right: 90px;
+  cursor: pointer;
+}
+
+.dropdown {
+  position: absolute;
+  right: 10px;
+}
+
+.view-error {
+  color: red;
+  text-align: center;
+  font-size: 20px;
+}
+
+.modal-footer-register {
+  color: #007bff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.modal-footer-register:hover {
+  color: #333;
+}
+
+.invites,
+.invites-head {
+  background: #c0c0c0ba;
+  display: flex;
+}
+
+.invites li,
+.invites-head li {
+  margin-left: 20px;
+}
+
+.invites li {
+  width: 37px;
+}
+
+.invites li:nth-child(8) {
+  margin-left: 50px;
+  width: 180px;
+}
+
+.generate-invite {
+  padding-left: 5px;
+  color: #007bff;
+  font-weight: 600;
+  font-size: 14px;
+  padding-top: 3px;
+  cursor: pointer;
+}
+
