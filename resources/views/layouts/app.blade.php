@@ -348,7 +348,7 @@
                                 <label>Повторите пароль</label>
                                 <input
                                     type="password"
-                                    name="password"
+                                    name="rePassword"
                                     class="form-control"
                                     required
                                     placeholder="Повторите пароль"
@@ -358,7 +358,7 @@
                                 <label>Invite код</label>
                                 <input
                                     type="text"
-                                    name="password"
+                                    name="inviteCode"
                                     class="form-control"
                                     required
                                     placeholder="Введите invite код"

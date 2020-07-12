@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Invite;
-use Session;
+use Route;
 
 class InviteController extends Controller
 {
@@ -46,8 +46,7 @@ class InviteController extends Controller
         ]);
 
         $invites = Invite::all();
-
-        return view('admin.invites', ['invites' => $invites]);
+        return redirect()->route('invites');
     }
 
     /**

@@ -46,9 +46,8 @@ class LoginController extends Controller
      *
      * @return redirect
      */
-    public function checklogin(Request $request)
+    public function checklogin()
     {
-
         if (Auth::attempt([
             'email' => request()->input('email'),
             'password' => request()->input('password'),

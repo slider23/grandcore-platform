@@ -47,23 +47,16 @@ main {
 
 .invites li,
 .invites-head li {
-  margin-left: 15px;
+  margin-left: 20px;
 }
 
 .invites li {
-  margin-left: 18px;
-}
-
-.invites li:nth-child(2) {
-  margin-left: 75px;
-}
-
-.invites li:nth-child(4) {
-  margin-left: 65px;
+  width: 37px;
 }
 
 .invites li:nth-child(8) {
-  margin-left: 58px;
+  margin-left: 50px;
+  width: 180px;
 }
 
 .generate-invite {
