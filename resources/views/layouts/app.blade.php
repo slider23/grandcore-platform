@@ -1,28 +1,53 @@
 <!DOCTYPE html>
 <html lang="ru">
-  <head>
-
-    @if(config('app.env') != 'local')
+    <head>
+        @if(config('app.env') != 'local')
         <!-- Yandex.Metrika counter -->
-        <script type="text/javascript" >
-            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        <script type="text/javascript">
+            (function(m, e, t, r, i, k, a) {
+                m[i] =
+                    m[i] ||
+                    function() {
+                        (m[i].a = m[i].a || []).push(arguments);
+                    };
+                m[i].l = 1 * new Date();
+                (k = e.createElement(t)),
+                    (a = e.getElementsByTagName(t)[0]),
+                    (k.async = 1),
+                    (k.src = r),
+                    a.parentNode.insertBefore(k, a);
+            })(
+                window,
+                document,
+                "script",
+                "https://mc.yandex.ru/metrika/tag.js",
+                "ym"
+            );
 
             ym(65202709, "init", {
-            clickmap:true,
-            trackLinks:true,
-            accurateTrackBounce:true,
-            webvisor:true
+                clickmap: true,
+                trackLinks: true,
+                accurateTrackBounce: true,
+                webvisor: true
             });
         </script>
-        <noscript><div><img src="https://mc.yandex.ru/watch/65202709" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+        <noscript
+            ><div>
+                <img
+                    src="https://mc.yandex.ru/watch/65202709"
+                    style="position:absolute; left:-9999px;"
+                    alt=""
+                /></div
+        ></noscript>
         <!-- /Yandex.Metrika counter -->
-    @endif
+        @endif
 
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
 
         <!-- Bootstrap CSS -->
         <link
@@ -61,8 +86,13 @@
                 text-align: center;
             }
         </style>
-         <!-- fancybox -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" />
+        <!-- fancybox -->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css"
+            integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw=="
+            crossorigin="anonymous"
+        />
     </head>
     <body>
         <nav
@@ -150,13 +180,23 @@
                             >
                                 @csrf
                             </form>
+
+                            @if(Auth::user()->id === 1)
+                            <a
+                                class="dropdown-item"
+                                href="{{ url('/users-list') }}"
+                            >
+                                Пользователи
+                            </a>
+                            <a
+                                class="dropdown-item"
+                                href="{{ url('/invites') }}"
+                            >
+                                Инвайты
+                            </a>
+                            @endif @endguest
                         </div>
                     </li>
-                    @if(Auth::user()->id === 1)
-                    <li class="nav-item nav-item-admin">
-                        <a class="nav-link" href="{{ url('/admin') }}">Админка</a>
-                    </li>
-                    @endif @endguest
                 </ul>
             </div>
         </nav>
@@ -238,9 +278,6 @@
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
- 
-        <!-- Grid column -->
-
         <div class="modal fade" id="loginModal" role="dialog">
             <div class="modal-dialog">
                 <!-- Modal content-->
@@ -274,12 +311,72 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <p>Регистрация</p>
+                        <p class="modal-footer-register">Регистрация</p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Grid column -->
+
+        <div class="modal fade" id="registerModal" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <form method="POST" action="/auth/register">
+                            {!! csrf_field() !!}
+                            <div class="form-group">
+                                <label>Логин</label>
+                                <input
+                                    type="email"
+                                    name="email"
+                                    class="form-control"
+                                    required
+                                    placeholder="Введите email"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>Пароль</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    required
+                                    placeholder="Введите пароль"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>Повторите пароль</label>
+                                <input
+                                    type="password"
+                                    name="password"
+                                    class="form-control"
+                                    required
+                                    placeholder="Повторите пароль"
+                                />
+                            </div>
+                            <div class="form-group">
+                                <label>Invite код</label>
+                                <input
+                                    type="text"
+                                    name="password"
+                                    class="form-control"
+                                    required
+                                    placeholder="Введите invite код"
+                                />
+                            </div>
+                            <b>
+                                Нету invite кода ? Обратитесь к администратору!
+                            </b>
+                            <br />
+                            <br />
+                            <button type="submit" class="btn btn-primary">
+                                Регистрация
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <script
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -298,33 +395,32 @@
         ></script>
 
         <script>
-
-
             $(".nav-item-login").click(() => {
                 $("#loginModal").modal("show");
             });
 
-            function setToken($token) {
-                localStorage.setItem("token", $token);
-            }
+            $(".modal-footer-register").click(() => {
+                $("#loginModal").modal("hide");
+                $("#registerModal").modal("show");
+            });
 
-            ;(function(){
-                const token = '{!! session()->get( 'jwtToken' ); !!}';
-
-               if(token) {
-                   localStorage.setItem('token', token);
-               }
-            })();
+            $(".create-invite").click(() => {
+                $("#createInviteModal").modal("show");
+            });
         </script>
-            <!-- fancybox -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous"></script>
+        <!-- fancybox -->
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"
+            integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA=="
+            crossorigin="anonymous"
+        ></script>
 
-    <!-- slider -->
-    <script>
-        jQuery(document).ready(($) => {
-            $('a.screenshot').fancybox();
-        });
-    </script>
+        <!-- slider -->
+        <script>
+            jQuery(document).ready($ => {
+                $("a.screenshot").fancybox();
+            });
+        </script>
     </body>
 </html>
 <!-- session()->get( 'jwtToken' ) -->

@@ -1,3 +1,10 @@
+
+ul
+    list-style-type: none
+
+main
+    min-height: calc(50vh)
+
 // nav
 .nav-item
     &-login
@@ -18,3 +25,35 @@
     color: red
     text-align: center
     font-size: 20px
+
+.modal-footer-register
+    color: #007bff
+    cursor: pointer
+    transition: all .3s ease
+    &:hover
+        color: #333
+
+// invites
+.invites, .invites-head
+    background: #c0c0c0ba
+    display: flex
+    li
+        margin-left: 15px
+
+.invites
+    li
+        margin-left: 18px
+        &:nth-child(2)
+            margin-left: 75px
+        &:nth-child(4)
+            margin-left: 65px
+        &:nth-child(8)
+            margin-left: 58px
+
+.generate-invite
+    padding-left: 5px
+    color: #007bff
+    font-weight: 600
+    font-size: 14px
+    padding-top: 3px
+    cursor: pointer

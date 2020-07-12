@@ -32,9 +32,11 @@ Route::get('/edem', function () {
 // auth
 Route::post('/auth/login', ['uses' => 'Auth\LoginController@checkLogin']);
 
-// admin panel
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+// admin routes
+Route::get('/users-list', function () {
+    return view('admin.users');
+})->middleware('admin');;
+
+Route::get('/invites', ['uses' => 'InviteController@index'])->middleware('admin');;
 
 Auth::routes();

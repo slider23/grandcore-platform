@@ -48,21 +48,11 @@ class LoginController extends Controller
      */
     public function checklogin(Request $request)
     {
+
         if (Auth::attempt([
             'email' => request()->input('email'),
             'password' => request()->input('password'),
         ])) {
-
-            if (Auth::user()->roles->first()['name'] === 'admin') {
-                $userId = Auth::user()->id;
-                $secret = env('TOKEN_SECRET_PARAM', 'sec!ReT423*&');
-                $expiration = time() + 3600;
-                $issuer = 'issuer';
-                $token = Token::create($userId, $secret, $expiration, $issuer);
-
-                return redirect('/')->with('jwtToken', $token);
-            }
-
             return redirect('/');
         } else {
             return redirect('/')->with('error', 'Неверный логин или пароль');
