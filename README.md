@@ -1,6 +1,8 @@
 # GrandCore Foundation
 *Open Source Корпорация*
 
+Front-End репозиторий https://github.com/grandcore/grandcore-platform-front
+
 [Сайт Платформы](https://grandcore.org/)
 [Проект в виде Карты](https://www.mindomo.com/mindmap/mind-map-83798b37459848089f13a01522e84907 )
 [Дизайн Экранов](https://www.figma.com/file/NlikNEJQHliYlxI3MHhiSW/Share?node-id=0%3A1 )
