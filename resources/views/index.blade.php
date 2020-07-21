@@ -190,17 +190,13 @@
 
                     <!-- Социальные сети начало -->
                 <h3>Подпишитесь на нас</h3>
-                <div>
-                    <div class="social-networks-item">
+               
                         <a href="https://github.com/grandcore">Github</a>
-                    </div>
-                    <div class="social-networks-item">
+<br>
                         <a href="https://t.me/grandcore">Telegram</a>
-                    </div>
-                    <div class="social-networks-item">
+<br>
                        <a href="https://www.youtube.com/channel/UCCcI0eNBhfd0qHIzZLDvKVA">YouTube</a>
-                    </div>
-                </div>
+
                     <!-- Социальные сети конец -->
 
                     
@@ -208,15 +204,16 @@
             </div>
             <div class="col-12 col-md-4">
                 <div class="inner">
-                <h3>Задачи в <a href="https://trello.com/invite/b/6niwvQ5a/27f2272547beb073b9a26a0d55a17014/grandcoreorg">Trello</a></h3>
+                <h3>Задачи в <a href="https://trello.com/b/6niwvQ5a/grandcore-tasks">Trello</a></h3>
                 
                 Все актуальные задачи у нас в Трелло. Комментарии открыты, пишите,если есть что написать.
                 
                     <h3 style="color:red;">Пиши, если хочешь нам помочь или у тебя есть вопросы и предложения.</h3>
-                    <ul>
-                        <li>Telegram - <a href="https://t.me/i0zgMRV49fX">@i0zgMRV49fX</a></li>
-                        <li>E-mail - <a href="mailto:ru@grandcore.org">ru@grandcore.org</a></li>
-                    </ul>
+     
+                        Telegram - <a href="https://t.me/i0zgMRV49fX">@i0zgMRV49fX</a>
+                        <br>
+                        E-mail - <a href="mailto:ru@grandcore.org">ru@grandcore.org</a>
+         
                 </div>
             </div>
             <div class="col-12 col-md-4">
