@@ -9,9 +9,9 @@
         @else
             <title>{{ config('app.name') }}</title>
         @endif
-		
+
         <!-- Favicon -->
-		<link rel="shortcut icon" href="{{ url(asset('favicon.ico')) }}">
+		<link rel="shortcut icon" href="{{ url(asset('favicon.png')) }}">
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
@@ -22,12 +22,13 @@
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <script src="{{ url(mix('js/app.js')) }}"></script>
     </head>
 
     <body>
         @yield('body')
 
-        <script src="{{ url(mix('js/app.js')) }}"></script>
+
         @livewireScripts
     </body>
 </html>

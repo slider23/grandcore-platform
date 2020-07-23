@@ -47,4 +47,9 @@ class User extends Authenticatable
     {
         return $this->where('name', $username)->orWhere('email', $username)->first();
     }
+
+    public function gravatarUrl()
+    {
+    	return "https://www.gravatar.com/avatar/".md5(strtolower(trim($this->email)));
+    }
 }

@@ -14,7 +14,7 @@ class AddColumnInviteIdToUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedInteger('invite_id')->nullable();
+            $table->unsignedBigInteger('invite_id')->nullable();
 
             $table->foreign('invite_id')
                 ->references('id')->on('invites')
