@@ -22,7 +22,7 @@
     </div>
 
 
-    <div class="grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow-lg md:grid-cols-5 border-t border-gray-100">
+    <div class="mt-16 grid grid-cols-1 rounded-lg bg-white overflow-hidden shadow-lg md:grid-cols-5 border-t border-gray-100">
         <div>
             <div class="px-4 py-5 sm:p-6">
                 <dl>
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    <div class="mt-10">
+    <div class="mt-16">
         <h2 class="text-4xl text-gray-700">Популярные проекты</h2>
         <div class="mt-4 grid grid-cols-1 md:grid-cols-3 gap-4 row-gap-10 w-full">
             <div>
@@ -255,6 +255,107 @@
             </div>
 
         </div>
+    </div>
+
+    <div class="mt-16">
+        <h2 class="text-4xl text-gray-700">Как мы работаем над проектами</h2>
+        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8 row-gap-16 w-full">
+
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        1
+                    </div>
+                </div>
+                <div>Пользователь предлагает новый проект</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        2
+                    </div>
+                </div>
+                <div>Сообщество одобряет, отвергает или просит доработать идею</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        3
+                    </div>
+                </div>
+                <div>У нового проекта появляется своя страница в каталоге</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        4
+                    </div>
+                </div>
+                <div>Пользователи  генерируют идеи для проекта</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        5
+                    </div>
+                </div>
+                <div>На основе идей пользователи пишут технические задания</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        6
+                    </div>
+                </div>
+                <div>Специалисты предлагают свои кандидатуры для реализации ТЗ</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        7
+                    </div>
+                </div>
+                <div>Пользователи получившие допуск предлагают свои пул реквесты</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        8
+                    </div>
+                </div>
+                <div>Подтвержденные изменения сохраняются в репозитории</div>
+            </div>
+            <div class="flex flex-row items-center">
+                <div class="circle bg-red-500 mr-6">
+                    <div class="text-white">
+                        9
+                    </div>
+                </div>
+                <div>Автоматически собираются новые релизы</div>
+            </div>
+
+        </div>
+
+        <div class="mt-16">
+            <h2 class="text-4xl text-gray-700">Сервисы</h2>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 row-gap-8 w-full">
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="mt-16">
+            <h2 class="text-4xl text-gray-700">Команда</h2>
+            <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 row-gap-8 w-full">
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+                <div class="bg-gray-300 rounded py-16">&nbsp;</div>
+            </div>
+        </div>
+
     </div>
 
 

@@ -47,6 +47,9 @@
     color: #3B4256;
 }
 
+.circle{ width: 28px; height: 28px; border-radius: 64px; }
+.circle div { position:relative; left: 0; top: 2px; text-align:center; }
+
 /**
  * This injects all of Tailwind's utility classes, generated based on your
  * config file.
