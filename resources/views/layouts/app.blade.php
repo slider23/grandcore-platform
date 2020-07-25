@@ -52,7 +52,7 @@
                                         From: "transform opacity-100 scale-100"
                                         To: "transform opacity-0 scale-95"
                                     -->
-                                    <div x-show="profile_dropdown_open" @click.away="profile_dropdown_open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
+                                    <div x-show="profile_dropdown_open" @click.away="profile_dropdown_open = false" style="display: none;" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
                                         <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
                                             @if(auth()->user()->isAdmin())
                                             <a href="{{route("admin")}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
@@ -80,7 +80,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                             <!-- Menu open: "block", Menu closed: "hidden" -->
-                            <svg x-show="mobile_menu_open === true" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <svg x-show="mobile_menu_open === true" style="display: none;" class="block h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                             </svg>
                         </button>

@@ -45,7 +45,7 @@ class AdminInvitesPage extends Component
         $this->maxRegistrations = $invite->max_count_register;
         $this->isFrozen = $invite->is_frozen;
         $this->showEditForm = true;
-        
+
         $this->dispatchBrowserEvent("edit-form-showed");
     }
 
