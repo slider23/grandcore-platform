@@ -6,7 +6,7 @@
             <img src="/img/video.png" >
         </div>
         <div class="mt-8 lg:mt-0 lg:flex-1 lg:px-16">
-            <div class="text-5xl leading-tight mb-8 ">Свободная информационная и промышленная альтернатива. </div>
+            <div class="text-2xl sm:text-3xl lg:text-5xl leading-tight mb-8 ">Свободная информационная и промышленная альтернатива. </div>
             <div class="rounded-lg bg-blue-400 px-8 py-4 w-72 flex justify-center text-white cursor-pointer">Предложить проект</div>
         </div>
     </div>
