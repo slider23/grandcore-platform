@@ -2,7 +2,7 @@
 
 Используется TALL-stack (https://tallstack.io) - Laravel, Livewire, TaiwindCSS, AlpineJS
 
-Все интерактивные элементы работают на Livewire (https://laravel-livewire.com/), служебное управление DOM - при помощи AlpineJS (https://github.com/alpinejs/alpine). Верстка на базе TailwindCSS (https://tailwindcss.com/) 
+Все интерактивные элементы работают на Livewire (https://laravel-livewire.com/), служебное управление DOM - при помощи AlpineJS (https://github.com/alpinejs/alpine). Верстка на базе TailwindCSS (https://tailwindcss.com/) и TailwindUI (https://tailwindui.com/).
 
 Преимущество такого подхода - простота написания (не надо делать аутентификацию по токенам и дублировать авторизацию и прочий код на клиенте), SSR из коробки (отсутствие проблем с индексацией поисковиками) и малый объём js-бандла (25 кБ).
 
