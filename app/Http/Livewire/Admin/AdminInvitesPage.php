@@ -10,9 +10,11 @@ class AdminInvitesPage extends Component
 {
     private $invites;
 
-    public $maxRegistrations;
+    public $max_count_register;
 
-    public $isFrozen;
+    public $is_frozen;
+
+    public $note;
 
     public $showEditForm;
 
@@ -20,19 +22,20 @@ class AdminInvitesPage extends Component
 
     public function mount()
     {
-    	$this->maxRegistrations = 1;
-    	$this->isFrozen = false;
+    	$this->max_count_register = 1;
+    	$this->is_frozen = false;
     }
 
     public function create_invite()
     {
         $this->validate([
-            'maxRegistrations' => ['required', 'numeric', 'min:1']
+            'max_count_register' => ['required', 'numeric', 'min:1']
         ]);
 
         $invite = new Invite();
-        $invite->max_count_register = $this->maxRegistrations;
+        $invite->max_count_register = $this->max_count_register;
         $invite->invite_symbols = Str::random(12);
+        $invite->note = $this->note;
         $invite->save();
 
         $this->dispatchBrowserEvent("invite-created");
@@ -42,8 +45,9 @@ class AdminInvitesPage extends Component
     {
         $invite = Invite::query()->where("id", $inviteId)->firstOrFail();
         $this->editInviteId = $inviteId;
-        $this->maxRegistrations = $invite->max_count_register;
-        $this->isFrozen = $invite->is_frozen;
+        $this->max_count_register = $invite->max_count_register;
+        $this->is_frozen = $invite->is_frozen;
+        $this->note = $invite->note;
         $this->showEditForm = true;
 
         $this->dispatchBrowserEvent("edit-form-showed");
@@ -57,12 +61,13 @@ class AdminInvitesPage extends Component
     public function edit_invite()
     {
         $this->validate([
-            'maxRegistrations' => ['required', 'numeric', 'min:1'],
-            'isFrozen' => ['required', 'boolean']
+            'max_count_register' => ['required', 'numeric', 'min:1'],
+            'is_frozen' => ['required', 'boolean']
         ]);
         $invite = Invite::query()->where("id", $this->editInviteId)->firstOrFail();
-        $invite->max_count_register = $this->maxRegistrations;
-        $invite->is_frozen = $this->isFrozen;
+        $invite->max_count_register = $this->max_count_register;
+        $invite->is_frozen = $this->is_frozen;
+        $invite->note = $this->note;
         $invite->save();
         $this->close_edit_form();
         $this->dispatchBrowserEvent("invite-edited");

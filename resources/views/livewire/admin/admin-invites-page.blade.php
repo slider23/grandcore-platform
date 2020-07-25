@@ -20,12 +20,18 @@
                             Создан
                         </th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider w-32">
+                            Инвайт
+                        </th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
+                            Назначение
+                        </th>
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider w-32">
                             Регистраций
                         </th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider w-24">
                             Заморожен
                         </th>
-                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider max-w-md">
+                        <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">
                             Зарегистрированные пользователи
                         </th>
                         <th class="px-6 py-3 border-b border-gray-200 bg-gray-50 w-16"></th>
@@ -34,8 +40,14 @@
                     <tbody class="bg-white">
                     @foreach($invites as $invite)
                         <tr wire:key="{{ $loop->index }}" x-data="{show_loader: false}" x-on:edit-form-showed.window="show_loader = false;">
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm">
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm text-gray-600">
                                 {{$invite->created_at->format("d.m.Y H:i")}}
+                            </td>
+                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 font-mono">
+                                {{$invite->invite_symbols}}
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-200 text-sm text-gray-600">
+                                {{$invite->note}}
                             </td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                 @if($invite->registered_users->count() == 0)
@@ -62,12 +74,12 @@
                                 </span>
                                 @endif
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5 text-gray-500">
+                            <td class="px-6 py-4 border-b border-gray-200 text-sm leading-5 text-gray-500">
                                 @foreach($invite->registered_users as $user)
                                     <span class="mr-2">{{$user->email}}</span>
                                 @endforeach
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap text-right border-b border-gray-200 text-sm leading-5 font-medium">
+                            <td class="px-6 py-4 text-right border-b border-gray-200 text-sm leading-5 font-medium">
                                 <span wire:click="show_edit_form({{$invite->id}})" @click="show_loader = true;" :class="{ 'spinner': show_loader === true }" class="text-blue-600 hover:text-blue-900 cursor-pointer">Edit</span>
                             </td>
                         </tr>
@@ -98,13 +110,21 @@
                     </div>
                     <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
-                            Создание инвайта:
+                            Создание инвайта
                         </h3>
-                        <div class="mt-2">
+                        <div class="mt-4">
+                            <p class="text-sm leading-5 text-gray-500 mt-2">Назначение инвайта:</p>
+                            <input type="text" wire:model="note"
+                                   class="form-input @error('note') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"/>
+                            @error('note')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mt-4">
                             <p class="text-sm leading-5 text-gray-500 mt-2">Максимальное количество регистраций:</p>
-                            <input type="text" wire:model="maxRegistrations"
-                                   class="form-input @error('maxRegistrations') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"/>
-                            @error('maxRegistrations')
+                            <input type="text" wire:model="max_count_register"
+                                   class="form-input @error('max_count_register') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"/>
+                            @error('max_count_register')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
@@ -149,46 +169,54 @@
                         <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">
                             Редактирование инвайта
                         </h3>
-                        <div class="mt-2">
-                            <p class="text-sm leading-5 text-gray-500 mt-2">Максимальное количество регистраций:</p>
-                            <input type="text" wire:model="maxRegistrations"
-                                   class="form-input @error('maxRegistrations') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"/>
-                            @error('maxRegistrations')
+                        <div class="mt-4">
+                            <p class="text-sm leading-5 text-gray-500 mt-2">Назначение инвайта:</p>
+                            <input type="text" wire:model="note"
+                                   class="form-input @error('note') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"/>
+                            @error('note')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="mt-2 flex items-center justify-between">
+                        <div class="mt-4">
+                            <p class="text-sm leading-5 text-gray-500 mt-2">Максимальное количество регистраций:</p>
+                            <input type="text" wire:model="max_count_register"
+                                   class="form-input @error('max_count_register') border-red-300 text-red-900 placeholder-red-300 focus:border-red-300 focus:shadow-outline-red @enderror"/>
+                            @error('max_count_register')
+                            <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
+                            @enderror
+                        </div>
+                        <div class="mt-4 flex items-center justify-between">
                             <div class="flex items-center">
-                                <input id="froze_invite" wire:model="isFrozen" type="checkbox"
+                                <input id="froze_invite" wire:model="is_frozen" type="checkbox"
                                        class="form-checkbox h-4 w-4 text-blue-600 transition duration-150 ease-in-out">
                                 <label for="froze_invite" class="ml-2 block text-sm leading-5 text-gray-900">
                                     заморозить инвайт и запретить по нему регистрацию
                                 </label>
                             </div>
-                            @error('isFrozen')
+                            @error('is_frozen')
                             <p class="mt-2 text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
-                        <div class="mt-5 sm:mt-4 sm:ml-10 sm:pl-4 sm:flex">
+
+                    </div>
+                </div>
+                <div class="mt-5 sm:mt-4 sm:ml-10 sm:pl-4 sm:flex">
                         <span class="flex w-full rounded-md shadow-sm sm:w-auto">
 {{--                            <button wire:click="edit_invite"
                                         @click="show_edit_loader = true" :class="{ 'spinner': show_edit_loader === true }"
                                     type="button" class="button-success">--}}
-{{--                              Сохранить--}}
-{{--                            </button>                            --}}
+                            {{--                              Сохранить--}}
+                            {{--                            </button>                            --}}
                             <button wire:click="edit_invite" wire:target="edit_invite" wire:loading.class="spinner"
                                     type="button" class="button-success">
                               Сохранить
                             </button>
                         </span>
-                            <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:w-auto">
+                    <span class="mt-3 flex w-full rounded-md shadow-sm sm:mt-0 sm:ml-3 sm:w-auto">
                             <button wire:click="close_edit_form" type="button" class="button">
                               Отмена
                             </button>
                         </span>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>
