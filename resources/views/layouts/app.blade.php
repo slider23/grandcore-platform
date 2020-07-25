@@ -93,7 +93,7 @@
 
               Open: "block", closed: "hidden"
             -->
-            <div x-show="mobile_menu_open" class="block md:hidden">
+            <div x-show="mobile_menu_open" style="display:none" class="block md:hidden">
                 <div class="px-2 pt-2 pb-3 sm:px-3">
                     <a href="#" class="block px-3 py-2 rounded-md text-sm font-medium text-white uppercase focus:outline-none focus:text-white">О фонде</a>
                     <a href="#" class="mt-1 block px-3 py-2 rounded-md text-sm font-medium text-blue-100 uppercase hover:text-white hover:bg-primary-light focus:outline-none focus:text-white focus:bg-primary-light">Пожертвования</a>
