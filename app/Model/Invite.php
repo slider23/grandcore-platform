@@ -34,4 +34,9 @@ class Invite extends Model
     protected $fillable = [
         'max_count_register', 'invite_symbols'
     ];
+
+    public function registered_users()
+    {
+    	return $this->hasMany(User::class);
+    }
 }

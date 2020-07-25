@@ -72,8 +72,18 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class, 'user_roles');
     }
 
+    public function invite()
+    {
+    	return $this->belongsTo(Invite::class);
+    }
+
     public function gravatarUrl()
     {
     	return "https://www.gravatar.com/avatar/".md5(strtolower(trim($this->email)));
+    }
+
+    public function isAdmin()
+    {
+    	return $this->roles->first()['name'] === 'admin';
     }
 }

@@ -47,4 +47,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('logout', 'Auth\LogoutController')
         ->name('logout');
+
+    Route::middleware('admin')->group(function () {
+        Route::livewire("admin", "admin.admin-dashboard-page")->layout("layouts.admin")->name("admin");
+        Route::livewire("admin/invites", "admin.admin-invites-page")->layout("layouts.admin")->name("admin.invites");
+    });
 });

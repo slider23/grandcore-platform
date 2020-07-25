@@ -35,6 +35,17 @@ module.exports = {
             //   speed: '500ms',
             // },
         }),
+        pagination: (theme) => ({
+            // Customize the color only. (optional)
+            color: theme('colors.blue.600'),
+
+            link: 'bg-white px-3 py-1 border-r border-t border-b text-black no-underline',
+            linkActive: 'font-bold',
+            linkSecond: 'rounded-l border-l',
+            linkBeforeLast: 'rounded-r',
+            linkFirst: 'mr-3 pl-5 border rounded',
+            linkLast: 'ml-3 pr-5 border rounded'
+        })
     },
     variants: {
         spinner: ['responsive'],
@@ -60,5 +71,6 @@ module.exports = {
         require('@tailwindcss/ui'),
         require('@tailwindcss/typography'),
         require('tailwindcss-spinner')({ className: 'spinner', themeKey: 'spinner' }),
+        require('tailwindcss-plugins/pagination'),
     ],
 };

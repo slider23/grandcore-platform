@@ -47,6 +47,72 @@
     color: #3B4256;
 }
 
+.button-primary{
+    @apply bg-blue-600 text-white text-sm font-medium px-4 py-2 flex justify-center border border-transparent rounded-md transition duration-150 ease-in-out;
+}
+sm\:.button-primary{
+    @apply text-sm leading-5;
+}
+.button-primary:hover{
+    @apply bg-blue-500;
+}
+.button-primary:focus{
+    @apply bg-blue-500 outline-none border-blue-700 shadow-outline-blue;
+}
+.button-primary:active{
+    @apply bg-blue-700;
+}
+
+.button-danger{
+    @apply bg-red-600 text-white text-sm font-medium px-4 py-2 flex justify-center border border-transparent rounded-md transition duration-150 ease-in-out;
+}
+sm\:.button-danger{
+    @apply text-sm leading-5;
+}
+.button-danger:hover{
+    @apply bg-red-500;
+}
+.button-danger:focus{
+    @apply bg-red-500 outline-none border-red-700 shadow-outline-red;
+}
+.button-danger:active{
+    @apply bg-red-700;
+}
+
+.button-success{
+    @apply inline-flex justify-center rounded-md border border-transparent px-4 py-2 bg-green-600 text-base leading-6 font-medium text-white shadow-sm transition ease-in-out duration-150;
+}
+sm\:.button-success{
+    @apply text-sm leading-5;
+}
+.button-success:hover{
+    @apply bg-green-500;
+}
+.button-success:focus{
+    @apply bg-green-500 outline-none border-green-700 shadow-outline-green;
+}
+.button-success:active{
+    @apply bg-green-700;
+}
+
+.button{
+    @apply inline-flex justify-center rounded-md border border-gray-300 px-4 py-2 bg-white text-base leading-6 font-medium text-gray-700 shadow-sm transition ease-in-out duration-150;
+}
+sm\:.button{
+    @apply text-sm leading-5;
+}
+.button:hover{
+    @apply text-gray-500;
+}
+.button:focus{
+    @apply outline-none border-blue-300 shadow-outline-blue;
+}
+.button:active{
+    @apply text-gray-700;
+}
+
+
+
 .circle{ width: 28px; height: 28px; border-radius: 64px; }
 .circle div { position:relative; left: 0; top: 2px; text-align:center; }
 

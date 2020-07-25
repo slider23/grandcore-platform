@@ -54,9 +54,11 @@
                                     -->
                                     <div x-show="profile_dropdown_open" @click.away="profile_dropdown_open = false" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg">
                                         <div class="py-1 rounded-md bg-white shadow-xs" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
-                                                Dashboard
+                                            @if(auth()->user()->isAdmin())
+                                            <a href="{{route("admin")}}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
+                                                Админка
                                             </a>
+                                            @endif
                                             <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">
                                                 Настройки
                                             </a>
@@ -121,8 +123,10 @@
                         </div>
                     </div>
                     <div class="mt-3 px-2" role="menu" aria-orientation="vertical" aria-labelledby="user-menu">
-                        <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-white hover:bg-blue-600 focus:outline-none focus:text-white focus:bg-blue-600" role="menuitem">Your Profile</a>
-                        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-white hover:bg-blue-600 focus:outline-none focus:text-white focus:bg-blue-600" role="menuitem">Settings</a>
+                        @if(auth()->user()->isAdmin())
+                        <a href="{{route("admin")}}" class="block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-white hover:bg-blue-600 focus:outline-none focus:text-white focus:bg-blue-600" role="menuitem">Админка</a>
+                        @endif
+                        <a href="#" class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-white hover:bg-blue-600 focus:outline-none focus:text-white focus:bg-blue-600" role="menuitem">Настройки</a>
                         <a href="#" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();"
                            class="mt-1 block px-3 py-2 rounded-md text-base font-medium text-blue-300 hover:text-white hover:bg-blue-600 focus:outline-none focus:text-white focus:bg-blue-600" role="menuitem">Выход</a>
@@ -282,10 +286,10 @@
                 </div>
                 <div class="mt-8 xl:mt-0">
                     <h4 class="text-sm leading-5 font-semibold tracking-wider text-gray-400 uppercase">
-                        Подпишитесь на новости
+                        Подписка
                     </h4>
                     <p class="mt-4 text-gray-500 text-base leading-6">
-                        Оставьте ваш email, если хотите быть в курсе происходящего
+                        Оставьте ваш email, если хотите получать новости:
                     </p>
                     <form class="mt-4 sm:flex sm:max-w-md">
                         <input aria-label="Email address" type="email" required class="appearance-none w-full px-5 py-3 border border-gray-300 text-base leading-6 rounded-md text-gray-900 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:border-blue-300 focus:shadow-outline transition duration-150 ease-in-out" placeholder="Enter your email" />
