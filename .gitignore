@@ -1,13 +1,6 @@
 /node_modules
 /public/hot
 /public/storage
-/public/css
-/public/js
-/public/worker.js
-/public/worker.js.map
-/public/fonts
-/public/images
-/public/mix-manifest.json
 /storage/*.key
 /vendor
 /.idea
