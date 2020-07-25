@@ -3,12 +3,7 @@
 @section('content')
     <div class="flex flex-col lg:flex-row lg:items-center mb-8">
         <div class="lg:flex-1">
-            <svg width="600" height="400" viewBox="0 0 600 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="600" height="400" rx="25" fill="black"/>
-                <circle cx="300" cy="200" r="40" fill="#3DA9FC"/>
-                <circle cx="300" cy="200" r="60" fill="#3DA9FC" fill-opacity="0.3"/>
-                <path d="M290.821 191.66C290.821 188.196 294.571 186.031 297.571 187.763L312.571 196.423C315.571 198.155 315.571 202.486 312.571 204.218L297.571 212.878C294.571 214.61 290.821 212.445 290.821 208.981L290.821 191.66Z" stroke="white"/>
-            </svg>
+            <img src="/img/video.png" >
         </div>
         <div class="mt-8 lg:mt-0 lg:flex-1 lg:px-16">
             <div class="text-5xl leading-tight mb-8 ">Свободная информационная и промышленная альтернатива. </div>
