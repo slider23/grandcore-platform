@@ -35,6 +35,7 @@ class Register extends Component
             'name' => $this->name,
             'email' => $this->email,
             'password' => $this->password,
+            'passwordConfirmation' => $this->passwordConfirmation,
             'invite_symbols' => $this->invite_symbols,
         ],[
             'name' => ['required', 'unique:users'],
